@@ -1,0 +1,59 @@
+{
+	"name": "cline-web",
+	"version": "1.0.0",
+	"description": "Cline Web Application - Full Stack",
+	"private": true,
+	"scripts": {
+		"install:all": "npm run install:server && npm run install:client",
+		"install:server": "cd server && npm install",
+		"install:client": "cd client && npm install",
+		"dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+		"dev:server": "cd server && npm run dev",
+		"dev:client": "cd client && npm run dev",
+		"build": "npm run build:server && npm run build:client",
+		"build:server": "cd server && npm run build",
+		"build:client": "cd client && npm run build",
+		"start": "cd server && npm start",
+		"test": "npm run test:server && npm run test:client",
+		"test:server": "cd server && npm test",
+		"test:client": "cd client && npm test",
+		"lint": "npm run lint:server && npm run lint:client",
+		"lint:server": "cd server && npm run lint",
+		"lint:client": "cd client && npm run lint",
+		"lint:fix": "npm run lint:server -- --fix && npm run lint:client -- --fix",
+		"docker:build": "docker-compose build",
+		"docker:up": "docker-compose up -d",
+		"docker:down": "docker-compose down",
+		"docker:logs": "docker-compose logs -f",
+		"docker:dev": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up",
+		"clean": "npm run clean:server && npm run clean:client",
+		"clean:server": "cd server && rm -rf dist node_modules",
+		"clean:client": "cd client && rm -rf dist node_modules",
+		"setup": "npm run install:all && npm run build"
+	},
+	"devDependencies": {
+		"concurrently": "^8.2.2"
+	},
+	"workspaces": [
+		"server",
+		"client",
+		"shared"
+	],
+	"keywords": [
+		"cline",
+		"ai",
+		"coding-assistant",
+		"web-app",
+		"full-stack",
+		"typescript",
+		"react",
+		"node.js"
+	],
+	"author": "Cline Team",
+	"license": "Apache-2.0",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/cxgreat2014/cline.git",
+		"directory": "web-app"
+	}
+}
