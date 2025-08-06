@@ -1,0 +1,275 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* Custom CSS Variables */
+:root {
+	--font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	--font-mono: "JetBrains Mono", "Monaco", "Consolas", "Liberation Mono", "Courier New", monospace;
+}
+
+/* Base Styles */
+* {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: var(--font-sans);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
+::-webkit-scrollbar-track {
+	@apply bg-gray-100 dark:bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+	@apply bg-gray-300 dark:bg-gray-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	@apply bg-gray-400 dark:bg-gray-500;
+}
+
+/* Firefox Scrollbar */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: rgb(156 163 175) rgb(243 244 246);
+}
+
+.dark * {
+	scrollbar-color: rgb(75 85 99) rgb(31 41 55);
+}
+
+/* Focus Styles */
+.focus-ring {
+	@apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800;
+}
+
+/* Loading Animation */
+.loading-dots {
+	display: inline-block;
+}
+
+.loading-dots::after {
+	content: "";
+	animation: loading-dots 1.5s infinite;
+}
+
+@keyframes loading-dots {
+	0%,
+	20% {
+		content: "";
+	}
+	40% {
+		content: ".";
+	}
+	60% {
+		content: "..";
+	}
+	80%,
+	100% {
+		content: "...";
+	}
+}
+
+/* Code Syntax Highlighting */
+.hljs {
+	@apply bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100;
+}
+
+.hljs-comment,
+.hljs-quote {
+	@apply text-gray-500 dark:text-gray-400 italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+	@apply text-blue-600 dark:text-blue-400 font-semibold;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+	@apply text-red-600 dark:text-red-400;
+}
+
+.hljs-string,
+.hljs-doctag {
+	@apply text-green-600 dark:text-green-400;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+	@apply text-purple-600 dark:text-purple-400 font-semibold;
+}
+
+.hljs-type,
+.hljs-class .hljs-title {
+	@apply text-yellow-600 dark:text-yellow-400 font-semibold;
+}
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+	@apply text-blue-600 dark:text-blue-400;
+}
+
+.hljs-regexp,
+.hljs-link {
+	@apply text-cyan-600 dark:text-cyan-400;
+}
+
+.hljs-symbol,
+.hljs-bullet {
+	@apply text-indigo-600 dark:text-indigo-400;
+}
+
+.hljs-built_in,
+.hljs-builtin-name {
+	@apply text-orange-600 dark:text-orange-400;
+}
+
+.hljs-meta {
+	@apply text-gray-600 dark:text-gray-400;
+}
+
+.hljs-deletion {
+	@apply bg-red-100 dark:bg-red-900;
+}
+
+.hljs-addition {
+	@apply bg-green-100 dark:bg-green-900;
+}
+
+.hljs-emphasis {
+	@apply italic;
+}
+
+.hljs-strong {
+	@apply font-bold;
+}
+
+/* Monaco Editor Theme */
+.monaco-editor {
+	@apply rounded-lg;
+}
+
+.monaco-editor .margin {
+	@apply bg-gray-50 dark:bg-gray-900;
+}
+
+/* Terminal Styles */
+.xterm {
+	@apply rounded-lg;
+}
+
+.xterm .xterm-viewport {
+	@apply bg-gray-900;
+}
+
+.xterm .xterm-screen {
+	@apply bg-gray-900;
+}
+
+/* Custom Components */
+.btn {
+	@apply inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors duration-200;
+}
+
+.btn-primary {
+	@apply text-white bg-blue-600 hover:bg-blue-700 focus:ring-blue-500;
+}
+
+.btn-secondary {
+	@apply text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 focus:ring-blue-500;
+}
+
+.btn-danger {
+	@apply text-white bg-red-600 hover:bg-red-700 focus:ring-red-500;
+}
+
+.btn-sm {
+	@apply px-3 py-1.5 text-xs;
+}
+
+.btn-lg {
+	@apply px-6 py-3 text-base;
+}
+
+.card {
+	@apply bg-white dark:bg-gray-800 shadow rounded-lg;
+}
+
+.card-header {
+	@apply px-6 py-4 border-b border-gray-200 dark:border-gray-700;
+}
+
+.card-body {
+	@apply px-6 py-4;
+}
+
+.card-footer {
+	@apply px-6 py-4 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700/50;
+}
+
+/* Utility Classes */
+.text-balance {
+	text-wrap: balance;
+}
+
+.line-clamp-2 {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.line-clamp-3 {
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+/* Animation Classes */
+.animate-fade-in {
+	animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-slide-up {
+	animation: slideUp 0.3s ease-out;
+}
+
+.animate-slide-down {
+	animation: slideDown 0.3s ease-out;
+}
+
+/* Print Styles */
+@media print {
+	.no-print {
+		display: none !important;
+	}
+
+	.print-break-before {
+		page-break-before: always;
+	}
+
+	.print-break-after {
+		page-break-after: always;
+	}
+}
