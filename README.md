@@ -34,6 +34,18 @@ Meet Cline (pronounced /klaɪn/, like "Klein"), an AI assistant that can use you
 
 Thanks to [Claude 3.7 Sonnet's agentic coding capabilities](https://www.anthropic.com/claude/sonnet), Cline can handle complex software development tasks step-by-step. With tools that let him create & edit files, explore large projects, use the browser, and execute terminal commands (after you grant permission), he can assist you in ways that go beyond code completion or tech support. Cline can even use the Model Context Protocol (MCP) to create new tools and extend his own capabilities. While autonomous AI scripts traditionally run in sandboxed environments, this extension provides a human-in-the-loop GUI to approve every file change and terminal command, providing a safe and accessible way to explore the potential of agentic AI.
 
+## 🏗️ 项目架构
+
+Cline采用现代化的分层架构设计，主要包括：
+
+- **核心扩展** (`src/`): TypeScript编写的VS Code扩展主体
+- **Webview UI** (`webview-ui/`): React构建的用户界面
+- **API集成**: 支持30+个AI提供商的统一接口
+- **MCP协议**: 可扩展的工具生态系统
+- **gRPC通信**: 高效的组件间通信
+
+📖 **[查看详细项目设计文档](docs/project-overview.md)**
+
 1. Enter your task and add images to convert mockups into functional apps or fix bugs with screenshots.
 2. Cline starts by analyzing your file structure & source code ASTs, running regex searches, and reading relevant files to get up to speed in existing projects. By carefully managing what information is added to context, Cline can provide valuable assistance even for large, complex projects without overwhelming the context window.
 3. Once Cline has the information he needs, he can:
@@ -44,6 +56,27 @@ Thanks to [Claude 3.7 Sonnet's agentic coding capabilities](https://www.anthrop
 
 > [!TIP]
 > Use the `CMD/CTRL + Shift + P` shortcut to open the command palette and type "Cline: Open In New Tab" to open the extension as a tab in your editor. This lets you use Cline side-by-side with your file explorer, and see how he changes your workspace more clearly.
+
+---
+
+## 🛠️ 技术栈
+
+### 后端 (Extension Host)
+- **TypeScript** + **Node.js** - 类型安全的扩展开发
+- **30+ AI提供商集成** - Anthropic, OpenAI, Google Gemini, AWS Bedrock等
+- **gRPC + Protocol Buffers** - 高效的组件间通信
+- **MCP (Model Context Protocol)** - 可扩展的工具生态
+
+### 前端 (Webview UI)
+- **React 18** + **TypeScript** - 现代化的用户界面
+- **Vite** - 快速的构建工具
+- **Tailwind CSS** - 实用优先的样式框架
+
+### 核心能力
+- **智能上下文管理** - 高效处理大型项目
+- **检查点系统** - 工作区状态快照和恢复
+- **浏览器自动化** - Computer Use能力支持
+- **安全的人机协作** - 所有操作需用户确认
 
 ---
 
@@ -136,6 +169,25 @@ For example, when working with a local web server, you can use 'Restore Workspac
 <!-- Transparent pixel to create line break after floating image -->
 
 <img width="2000" height="0" src="https://github.com/user-attachments/assets/ee14e6f7-20b8-4391-9091-8e8e25561929"><br>
+
+## 📚 文档导航
+
+### 快速开始
+- [什么是Cline?](docs/getting-started/what-is-cline.mdx) - 项目介绍和核心概念
+- [安装指南](docs/getting-started/installing-cline.mdx) - 详细的安装步骤
+- [新手指南](docs/getting-started/for-new-coders.mdx) - 编程新手的入门教程
+- [模型选择指南](docs/getting-started/model-selection-guide.mdx) - 如何选择合适的AI模型
+
+### 核心功能
+- [项目架构概览](docs/project-overview.md) - 详细的技术架构文档
+- [功能特性](docs/features/) - 所有功能的详细说明
+- [MCP协议](docs/mcp/) - Model Context Protocol集成
+- [提供商配置](docs/provider-config/) - 各AI提供商的配置方法
+
+### 高级用法
+- [提示工程指南](docs/prompting/) - 如何更好地与Cline交互
+- [企业解决方案](docs/enterprise-solutions/) - 企业级部署和配置
+- [故障排除](docs/troubleshooting/) - 常见问题解决方案
 
 ## Contributing
 
