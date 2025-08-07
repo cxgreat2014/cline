@@ -30,22 +30,20 @@ export class Task {
 	@PrimaryGeneratedColumn("uuid")
 	id: string
 
-	@Column()
+	@Column({ type: "varchar" })
 	title: string
 
 	@Column({ type: "text", nullable: true })
 	description: string
 
 	@Column({
-		type: "simple-enum",
-		enum: TaskStatus,
+		type: "varchar",
 		default: TaskStatus.PENDING,
 	})
 	status: TaskStatus
 
 	@Column({
-		type: "simple-enum",
-		enum: TaskMode,
+		type: "varchar",
 		default: TaskMode.ACT,
 	})
 	mode: TaskMode
@@ -74,13 +72,13 @@ export class Task {
 		gitCommit?: string
 	}[]
 
-	@Column({ default: 0 })
+	@Column({ type: "integer", default: 0 })
 	messageCount: number
 
-	@Column({ nullable: true })
+	@Column({ type: "datetime", nullable: true })
 	startedAt: Date
 
-	@Column({ nullable: true })
+	@Column({ type: "datetime", nullable: true })
 	completedAt: Date
 
 	@CreateDateColumn()
@@ -94,14 +92,14 @@ export class Task {
 	@JoinColumn({ name: "userId" })
 	user: User
 
-	@Column()
+	@Column({ type: "varchar" })
 	userId: string
 
 	@ManyToOne(() => Repository, (repository) => repository.tasks)
 	@JoinColumn({ name: "repositoryId" })
 	repository: Repository
 
-	@Column()
+	@Column({ type: "varchar" })
 	repositoryId: string
 
 	@OneToMany(() => Message, (message) => message.task)

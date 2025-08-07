@@ -24,8 +24,7 @@ export class Message {
 	id: string
 
 	@Column({
-		type: "simple-enum",
-		enum: MessageType,
+		type: "varchar",
 	})
 	type: MessageType
 
@@ -33,8 +32,7 @@ export class Message {
 	content: string
 
 	@Column({
-		type: "simple-enum",
-		enum: MessageStatus,
+		type: "varchar",
 		default: MessageStatus.COMPLETED,
 	})
 	status: MessageStatus
@@ -51,13 +49,13 @@ export class Message {
 		executionTime?: number
 	}
 
-	@Column({ default: 0 })
+	@Column({ type: "integer", default: 0 })
 	sequence: number
 
 	@CreateDateColumn()
 	createdAt: Date
 
-	@Column({ nullable: true })
+	@Column({ type: "datetime", nullable: true })
 	completedAt: Date
 
 	// Relations
@@ -65,14 +63,14 @@ export class Message {
 	@JoinColumn({ name: "taskId" })
 	task: Task
 
-	@Column()
+	@Column({ type: "varchar" })
 	taskId: string
 
 	@ManyToOne(() => User, { nullable: true })
 	@JoinColumn({ name: "userId" })
 	user: User
 
-	@Column({ nullable: true })
+	@Column({ type: "varchar", nullable: true })
 	userId: string
 
 	// Methods

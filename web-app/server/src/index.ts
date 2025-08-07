@@ -1,4 +1,9 @@
-import "dotenv/config"
+import "reflect-metadata"
+import dotenv from "dotenv"
+import path from "path"
+
+// Load environment variables from parent directory
+dotenv.config({ path: path.join(__dirname, "../../.env") })
 import express from "express"
 import cors from "cors"
 import helmet from "helmet"
@@ -7,21 +12,21 @@ import morgan from "morgan"
 import { createServer } from "http"
 import { Server as SocketIOServer } from "socket.io"
 
-import { AppDataSource } from "@/config/database"
-import { errorHandler } from "@middleware/errorHandler"
-import { authMiddleware } from "@middleware/auth"
-import { rateLimiter } from "@middleware/rateLimiter"
+import { AppDataSource } from "./config/database"
+import { errorHandler } from "./middleware/errorHandler"
+import { authMiddleware } from "./middleware/auth"
+import { rateLimiter } from "./middleware/rateLimiter"
 
 // API Routes
-import authRoutes from "@api/auth"
-import repositoryRoutes from "@api/repositories"
-import taskRoutes from "@api/tasks"
-import fileRoutes from "@api/files"
-import terminalRoutes from "@api/terminal"
+import authRoutes from "./api/auth"
+import repositoryRoutes from "./api/repositories"
+import taskRoutes from "./api/tasks"
+import fileRoutes from "./api/files"
+import terminalRoutes from "./api/terminal"
 
 // Services
-import { SocketService } from "@services/SocketService"
-import { ClineService } from "@services/ClineService"
+import { SocketService } from "./services/SocketService"
+import { ClineService } from "./services/ClineService"
 
 const app = express()
 const server = createServer(app)

@@ -1,8 +1,8 @@
 import { Server as SocketIOServer, Socket } from "socket.io"
 import { EventEmitter } from "events"
 import jwt from "jsonwebtoken"
-import { User } from "@models/User"
-import { AppDataSource } from "@/config/database"
+import { User } from "../models/User"
+import { AppDataSource } from "../config/database"
 
 export interface SocketUser {
 	id: string

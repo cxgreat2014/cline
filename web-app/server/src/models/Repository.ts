@@ -23,18 +23,17 @@ export class Repository {
 	@PrimaryGeneratedColumn("uuid")
 	id: string
 
-	@Column()
+	@Column({ type: "varchar" })
 	name: string
 
-	@Column({ unique: true })
+	@Column({ type: "varchar", unique: true })
 	path: string
 
-	@Column({ nullable: true })
+	@Column({ type: "varchar", nullable: true })
 	description: string
 
 	@Column({
-		type: "simple-enum",
-		enum: RepositoryStatus,
+		type: "varchar",
 		default: RepositoryStatus.ACTIVE,
 	})
 	status: RepositoryStatus
@@ -63,7 +62,7 @@ export class Repository {
 		admin: boolean
 	}
 
-	@Column({ nullable: true })
+	@Column({ type: "datetime", nullable: true })
 	lastAccessedAt: Date
 
 	@CreateDateColumn()
@@ -77,7 +76,7 @@ export class Repository {
 	@JoinColumn({ name: "ownerId" })
 	owner: User
 
-	@Column()
+	@Column({ type: "varchar" })
 	ownerId: string
 
 	@OneToMany(() => Task, (task) => task.repository)

@@ -2,9 +2,9 @@ import fs from "fs/promises"
 import path from "path"
 import chokidar from "chokidar"
 import { EventEmitter } from "events"
-import { Repository } from "@models/Repository"
-import { FileChange, FileChangeType } from "@models/FileChange"
-import { AppDataSource } from "@/config/database"
+import { Repository } from "../models/Repository"
+import { FileChange, FileChangeType } from "../models/FileChange"
+import { AppDataSource } from "../config/database"
 
 export interface FileInfo {
 	name: string

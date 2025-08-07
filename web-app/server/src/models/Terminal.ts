@@ -14,20 +14,19 @@ export class Terminal {
 	@PrimaryGeneratedColumn("uuid")
 	id: string
 
-	@Column()
+	@Column({ type: "varchar" })
 	sessionId: string
 
-	@Column()
+	@Column({ type: "varchar" })
 	name: string
 
 	@Column({
-		type: "simple-enum",
-		enum: TerminalStatus,
+		type: "varchar",
 		default: TerminalStatus.ACTIVE,
 	})
 	status: TerminalStatus
 
-	@Column()
+	@Column({ type: "varchar" })
 	workingDirectory: string
 
 	@Column({ type: "json", nullable: true })
@@ -44,10 +43,10 @@ export class Terminal {
 	@Column({ type: "text", nullable: true })
 	lastOutput: string
 
-	@Column({ nullable: true })
+	@Column({ type: "datetime", nullable: true })
 	lastActivityAt: Date
 
-	@Column({ nullable: true })
+	@Column({ type: "datetime", nullable: true })
 	closedAt: Date
 
 	@CreateDateColumn()
@@ -61,14 +60,14 @@ export class Terminal {
 	@JoinColumn({ name: "repositoryId" })
 	repository: Repository
 
-	@Column()
+	@Column({ type: "varchar" })
 	repositoryId: string
 
 	@ManyToOne(() => User)
 	@JoinColumn({ name: "userId" })
 	user: User
 
-	@Column()
+	@Column({ type: "varchar" })
 	userId: string
 
 	// Methods

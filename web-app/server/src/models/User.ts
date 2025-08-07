@@ -13,26 +13,25 @@ export class User {
 	@PrimaryGeneratedColumn("uuid")
 	id: string
 
-	@Column({ unique: true })
+	@Column({ type: "varchar", unique: true })
 	username: string
 
-	@Column({ unique: true })
+	@Column({ type: "varchar", unique: true })
 	email: string
 
-	@Column()
+	@Column({ type: "varchar" })
 	passwordHash: string
 
 	@Column({
-		type: "simple-enum",
-		enum: UserRole,
+		type: "varchar",
 		default: UserRole.USER,
 	})
 	role: UserRole
 
-	@Column({ default: true })
+	@Column({ type: "boolean", default: true })
 	isActive: boolean
 
-	@Column({ nullable: true })
+	@Column({ type: "datetime", nullable: true })
 	lastLoginAt: Date
 
 	@Column({ type: "json", nullable: true })

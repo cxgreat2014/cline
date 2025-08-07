@@ -2,11 +2,11 @@ import { Router } from "express"
 import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
 import Joi from "joi"
-import { User, UserRole } from "@models/User"
-import { AppDataSource } from "@/config/database"
-import { authRateLimiter, strictRateLimiter } from "@middleware/rateLimiter"
-import { asyncHandler, ValidationError, UnauthorizedError, ConflictError } from "@middleware/errorHandler"
-import { authMiddleware, AuthenticatedRequest } from "@middleware/auth"
+import { User, UserRole } from "../models/User"
+import { AppDataSource } from "../config/database"
+import { authRateLimiter, strictRateLimiter } from "../middleware/rateLimiter"
+import { asyncHandler, ValidationError, UnauthorizedError, ConflictError } from "../middleware/errorHandler"
+import { authMiddleware, AuthenticatedRequest } from "../middleware/auth"
 
 const router = Router()
 const userRepository = AppDataSource.getRepository(User)

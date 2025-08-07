@@ -15,15 +15,14 @@ export class FileChange {
 	@PrimaryGeneratedColumn("uuid")
 	id: string
 
-	@Column()
+	@Column({ type: "varchar" })
 	filePath: string
 
-	@Column({ nullable: true })
+	@Column({ type: "varchar", nullable: true })
 	oldFilePath: string // For rename operations
 
 	@Column({
-		type: "simple-enum",
-		enum: FileChangeType,
+		type: "varchar",
 	})
 	changeType: FileChangeType
 
@@ -44,7 +43,7 @@ export class FileChange {
 		}>
 	}
 
-	@Column({ nullable: true })
+	@Column({ type: "varchar", nullable: true })
 	gitCommit: string
 
 	@Column({ type: "json", nullable: true })
@@ -64,21 +63,21 @@ export class FileChange {
 	@JoinColumn({ name: "repositoryId" })
 	repository: Repository
 
-	@Column()
+	@Column({ type: "varchar" })
 	repositoryId: string
 
 	@ManyToOne(() => Task, { nullable: true, onDelete: "SET NULL" })
 	@JoinColumn({ name: "taskId" })
 	task: Task
 
-	@Column({ nullable: true })
+	@Column({ type: "varchar", nullable: true })
 	taskId: string
 
 	@ManyToOne(() => User, { nullable: true })
 	@JoinColumn({ name: "userId" })
 	user: User
 
-	@Column({ nullable: true })
+	@Column({ type: "varchar", nullable: true })
 	userId: string
 
 	// Methods
