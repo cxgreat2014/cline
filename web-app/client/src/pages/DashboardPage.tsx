@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { Plus, FolderOpen, GitBranch, Clock, Activity, AlertCircle, CheckCircle, XCircle, Search, Filter } from "lucide-react"
 import toast from "react-hot-toast"
 import { useRepositoryStore, Repository } from "@store/repositoryStore"
@@ -13,7 +13,7 @@ const DashboardPage: React.FC = () => {
 
 	const { repositories, isLoading, error, fetchRepositories, clearError } = useRepositoryStore()
 	const { user } = useAuthStore()
-	const navigate = useNavigate()
+	// const navigate = useNavigate() // Commented out to avoid unused variable warning
 
 	useEffect(() => {
 		fetchRepositories()
@@ -34,29 +34,7 @@ const DashboardPage: React.FC = () => {
 		return matchesSearch && matchesStatus
 	})
 
-	const getStatusIcon = (status: string) => {
-		switch (status) {
-			case "active":
-				return <CheckCircle className="h-5 w-5 text-green-500" />
-			case "inactive":
-				return <Clock className="h-5 w-5 text-yellow-500" />
-			case "error":
-				return <XCircle className="h-5 w-5 text-red-500" />
-			default:
-				return <AlertCircle className="h-5 w-5 text-gray-500" />
-		}
-	}
-
-	const getLanguageColor = (language?: string) => {
-		const colors: Record<string, string> = {
-			javascript: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300",
-			typescript: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300",
-			python: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300",
-			rust: "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300",
-			go: "bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-300",
-		}
-		return colors[language || ""] || "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300"
-	}
+	// Moved these functions to RepositoryCard component to avoid unused variable warnings
 
 	if (isLoading && repositories.length === 0) {
 		return (

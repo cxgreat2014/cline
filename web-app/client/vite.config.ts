@@ -39,9 +39,7 @@ export default defineConfig({
 			output: {
 				manualChunks: {
 					vendor: ["react", "react-dom", "react-router-dom"],
-					editor: ["@monaco-editor/react", "monaco-editor"],
-					terminal: ["@xterm/xterm", "@xterm/addon-fit", "@xterm/addon-web-links"],
-					markdown: ["react-markdown", "remark-gfm", "rehype-highlight"],
+					utils: ["socket.io-client", "axios", "zustand"],
 				},
 			},
 		},

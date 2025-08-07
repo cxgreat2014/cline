@@ -4,10 +4,10 @@ import App from "./App.tsx"
 import "./index.css"
 
 // Error boundary for development
-if (import.meta.env.DEV) {
+if (import.meta.env?.DEV) {
 	// Enable React DevTools
 	if (typeof window !== "undefined") {
-		window.__REACT_DEVTOOLS_GLOBAL_HOOK__ = window.__REACT_DEVTOOLS_GLOBAL_HOOK__ || {}
+		;(window as any).__REACT_DEVTOOLS_GLOBAL_HOOK__ = (window as any).__REACT_DEVTOOLS_GLOBAL_HOOK__ || {}
 	}
 }
 

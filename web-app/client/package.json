@@ -12,17 +12,20 @@
 		"type-check": "tsc --noEmit"
 	},
 	"dependencies": {
+		"@tailwindcss/aspect-ratio": "^0.4.2",
+		"@tailwindcss/forms": "^0.5.10",
+		"@tailwindcss/typography": "^0.5.16",
+		"axios": "^1.6.2",
+		"clsx": "^2.0.0",
+		"date-fns": "^2.30.0",
+		"lucide-react": "^0.294.0",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
+		"react-hot-toast": "^2.4.1",
 		"react-router-dom": "^6.20.1",
 		"socket.io-client": "^4.7.4",
-		"axios": "^1.6.2",
-		"zustand": "^4.4.7",
-		"react-hot-toast": "^2.4.1",
-		"lucide-react": "^0.294.0",
-		"clsx": "^2.0.0",
 		"tailwind-merge": "^2.1.0",
-		"date-fns": "^2.30.0"
+		"zustand": "^4.4.7"
 	},
 	"devDependencies": {
 		"@types/react": "^18.2.37",

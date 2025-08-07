@@ -9,7 +9,7 @@ class SocketService {
 			return this.socket
 		}
 
-		const wsUrl = import.meta.env.VITE_WS_URL || "ws://localhost:8000"
+		const wsUrl = import.meta.env?.VITE_WS_URL || "ws://localhost:8000"
 
 		this.socket = io(wsUrl, {
 			auth: {
@@ -21,7 +21,7 @@ class SocketService {
 			reconnectionAttempts: 5,
 			reconnectionDelay: 1000,
 			reconnectionDelayMax: 5000,
-			maxReconnectionAttempts: 5,
+			// maxReconnectionAttempts: 5 // This option doesn't exist, using reconnectionAttempts instead,
 		})
 
 		return this.socket
@@ -44,16 +44,16 @@ class SocketService {
 
 	on<K extends keyof SocketEvents>(event: K, callback: (data: SocketEvents[K]) => void): void {
 		if (this.socket) {
-			this.socket.on(event, callback)
+			this.socket.on(event as string, callback as any)
 		}
 	}
 
 	off<K extends keyof SocketEvents>(event: K, callback?: (data: SocketEvents[K]) => void): void {
 		if (this.socket) {
 			if (callback) {
-				this.socket.off(event, callback)
+				this.socket.off(event as string, callback as any)
 			} else {
-				this.socket.off(event)
+				this.socket.off(event as string)
 			}
 		}
 	}
